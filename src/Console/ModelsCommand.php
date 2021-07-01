@@ -388,7 +388,8 @@ class ModelsCommand extends Command
                 continue;
             }
 
-            $realType = $this->checkForCustomLaravelCasts($realType);
+            if(!$realType)
+                $realType = $this->checkForCustomLaravelCasts($realType);
             $realType = $this->getTypeOverride($realType);
             $this->properties[$name]['type'] = $this->getTypeInModel($model, $realType);
 
